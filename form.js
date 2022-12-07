@@ -1170,18 +1170,18 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  const landingPageFocus = localStorage.getItem("landingPageFocus");
+  const productPitch = localStorage.getItem("productPitch");
 
-  if (!landingPageFocus) {
+  if (!productPitch) {
     return;
   }
 
   $("<input>")
     .attr({
       type: "hidden",
-      id: "landingPageFocus",
-      name: "landingPageFocus",
-      value: landingPageFocus,
+      id: "productPitch",
+      name: "productPitch",
+      value: productPitch,
     })
     .insertBefore("#form-page-validation");
 });

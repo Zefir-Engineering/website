@@ -2,15 +2,23 @@ $(function () {
   initAutoComplete($("#autocomplete"), $("#goingnext"));
   initAutoComplete($("#autocomplete_2"), $("#goingnext-2"));
   initAutoComplete($("#autocomplete_3"), $("#goingnext-3"));
-  storeDataForLandingPageABTesting();
+  storeDataForProductPitchABTesting();
 });
 
-function storeDataForLandingPageABTesting() {
-  var landingPageFocus = { s: "certainty", v: "speed" }[
-    location.pathname.split("/")[1]
-  ];
-  if (landingPageFocus) {
-    localStorage.setItem("landingPageFocus", landingPageFocus);
+function storeDataForProductPitchABTesting() {
+  const path = location.pathname.toLowerCase();
+
+  // we use startsWith because subpaths might exist (`/lp/max/something` etc)
+  const productPitch = path.startsWith("/lp/max")
+    ? "max"
+    : path.startsWith("/lp/cover")
+    ? "cover"
+    : path.startsWith("/lp/list-with-zefir") //final URL will be defined in a future PR
+    ? "listing"
+    : "unknown";
+
+  if (productPitch) {
+    localStorage.setItem("productPitch", productPitch);
   }
 }
 
