@@ -2,16 +2,18 @@ $(function () {
   initAutoComplete($("#autocomplete"), $("#goingnext"));
   initAutoComplete($("#autocomplete_2"), $("#goingnext-2"));
   initAutoComplete($("#autocomplete_3"), $("#goingnext-3"));
-  storeDataForLandingPageABTesting();
+  storeDataForProductPitchABTesting();
 });
 
-function storeDataForLandingPageABTesting() {
-  var landingPageFocus = { s: "certainty", v: "speed" }[
-    location.pathname.split("/")[1]
-  ];
-  if (landingPageFocus) {
-    localStorage.setItem("landingPageFocus", landingPageFocus);
-  }
+function storeDataForProductPitchABTesting() {
+  const path = location.pathname.toLowerCase();
+
+  localStorage.setItem(
+    "productPitch",
+
+    // we use startsWith because subpaths might exist (`/lp/max/something` etc)
+    path.startsWith("/lp/max") ? "max" : "cover"
+  );
 }
 
 let showError = true;
