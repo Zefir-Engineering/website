@@ -1170,18 +1170,12 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  const productPitch = localStorage.getItem("productPitch");
-
-  if (!productPitch) {
-    return;
-  }
-
   $("<input>")
     .attr({
       type: "hidden",
       id: "productPitch",
       name: "productPitch",
-      value: productPitch,
+      value: localStorage.getItem("productPitch") || "cover",
     })
     .insertBefore("#form-page-validation");
 });

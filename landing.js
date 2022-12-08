@@ -8,18 +8,12 @@ $(function () {
 function storeDataForProductPitchABTesting() {
   const path = location.pathname.toLowerCase();
 
-  // we use startsWith because subpaths might exist (`/lp/max/something` etc)
-  const productPitch = path.startsWith("/lp/max")
-    ? "max"
-    : path.startsWith("/lp/cover")
-    ? "cover"
-    : path.startsWith("/lp/list-with-zefir") //final URL will be defined in a future PR
-    ? "listing"
-    : "unknown";
+  localStorage.setItem(
+    "productPitch",
 
-  if (productPitch) {
-    localStorage.setItem("productPitch", productPitch);
-  }
+    // we use startsWith because subpaths might exist (`/lp/max/something` etc)
+    path.startsWith("/lp/max") ? "max" : "cover"
+  );
 }
 
 let showError = true;
