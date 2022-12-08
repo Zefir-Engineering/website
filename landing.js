@@ -12,7 +12,7 @@ function storeDataForProductPitchABTesting() {
     "productPitch",
 
     // we use startsWith because subpaths might exist (`/lp/max/something` etc)
-    path.startsWith("/lp/max") ? "max" : "cover"
+    path.startsWith("/lp/max") ? "MAX" : "COVER"
   );
 }
 
