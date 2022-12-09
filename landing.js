@@ -5,6 +5,8 @@ $(function () {
   storeDataForProductPitchABTesting();
 });
 
+// used by the marketing team for analytics and AB testing, to track which page,
+// ad or marketing pitch was presented to the seller initially
 function storeDataForProductPitchABTesting() {
   const path = location.pathname.toLowerCase();
 
@@ -12,7 +14,8 @@ function storeDataForProductPitchABTesting() {
     "productPitch",
 
     // we use startsWith because subpaths might exist (`/lp/max/something` etc)
-    path.startsWith("/lp/max") ? "MAX" : "COVER"
+    // we use "NONE" by default, but later in the future we may have a dedicated "COVER" page
+    path.startsWith("/lp/max") ? "MAX" : "NONE"
   );
 }
 
