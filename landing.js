@@ -10,17 +10,16 @@ $(function () {
 function storeDataForProductPitchABTesting() {
   const path = location.pathname.toLowerCase();
 
-  localStorage.setItem(
-    "productPitch",
-
-    // we use startsWith because subpaths might exist (`/lp/max/something` etc)
-    // we use "NONE" by default, but later in the future we may have a dedicated "COVER" page
-    path.startsWith("/lp/max") ? "MAX" : "NONE"
-  );
+  const productPitches = [
+    [/\/(lp\/|)max($|\/.*)/, "MAX"],
+    [/\/(lp\/|)cover($|\/.*)/, "COVER"],
+    [/\/(lp\/|)vendre(-|\/).+/, "COVER"],
+    [/\/.*/, "NONE"],
+  ];
+  localStorage.setItem("productPitch", productPitches.find((v) => v[0].test(path))[1]);
 }
 
 let showError = true;
-
 function displayError() {
   if (showError) {
     showError = false;
