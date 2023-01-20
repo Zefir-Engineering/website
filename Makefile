@@ -6,7 +6,7 @@ all: $(DJS)
 .PHONY: all
 
 dist/%.min.js : %.js
-	npx uglify-js $^ --compress --mangle --no-annotations -o $@ --source-map
+	npx uglify-js $^ --compress --mangle toplevel --no-annotations -o $@ --source-map
 
 format:
 	npx prettier -w *.js
