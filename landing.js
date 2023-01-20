@@ -31,7 +31,7 @@ function createCookieAndRedirect(place) {
     postal_code: 'short_name',
   };
 
-  // for some reason, the first item it ine address_components object should be the street number, if it's not, we manually set the cookie for it
+  // for some reason, the first item in the address_components object should be the street number, if it's not, we manually set the cookie for it
   if (place.address_components[0].types[0] != 'street_number') {
     document.cookie = 'street_number=1;path=/';
   }

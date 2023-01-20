@@ -8,8 +8,8 @@ all: $(DJS)
 dist/%.min.js : %.js
 	npx uglify-js $^ --compress --mangle toplevel --no-annotations -o $@ --source-map
 
-format:
-	npx prettier -w *.js
+format: $(OJS)
+	npx prettier -w $^
 
 install:
 	yarn add -D uglify-js prettier
