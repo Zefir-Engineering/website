@@ -1,8 +1,10 @@
 $(function () {
-  initAutoComplete($("#autocomplete"), $("#goingnext"));
-  initAutoComplete($("#autocomplete_2"), $("#goingnext-2"));
-  initAutoComplete($("#autocomplete_3"), $("#goingnext-3"));
-  storeDataForProductPitchABTesting();
+  $("#zefir-gp").on("load", function () {
+    initAutoComplete($("#autocomplete"), $("#goingnext"));
+    initAutoComplete($("#autocomplete_2"), $("#goingnext-2"));
+    initAutoComplete($("#autocomplete_3"), $("#goingnext-3"));
+    storeDataForProductPitchABTesting();
+  });
 });
 
 // used by the marketing team for analytics and AB testing, to track which page,
@@ -16,7 +18,10 @@ function storeDataForProductPitchABTesting() {
     [/\/(lp\/|)vendre(-|\/).+/, "COVER"],
     [/\/.*/, "NONE"],
   ];
-  localStorage.setItem("productPitch", productPitches.find((v) => v[0].test(path))[1]);
+  localStorage.setItem(
+    "productPitch",
+    productPitches.find((v) => v[0].test(path))[1]
+  );
 }
 
 let showError = true;
