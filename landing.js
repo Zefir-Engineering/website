@@ -1,9 +1,12 @@
-$(function () {
+/**
+ * Will be called once the Google Maps API is loaded & by this script
+ */
+function initGoogleMap() {
   initAutoComplete($("#autocomplete"), $("#goingnext"));
   initAutoComplete($("#autocomplete_2"), $("#goingnext-2"));
   initAutoComplete($("#autocomplete_3"), $("#goingnext-3"));
   storeDataForProductPitchABTesting();
-});
+}
 
 // used by the marketing team for analytics and AB testing, to track which page,
 // ad or marketing pitch was presented to the seller initially
@@ -16,7 +19,10 @@ function storeDataForProductPitchABTesting() {
     [/\/(lp\/|)vendre(-|\/).+/, "COVER"],
     [/\/.*/, "NONE"],
   ];
-  localStorage.setItem("productPitch", productPitches.find((v) => v[0].test(path))[1]);
+  localStorage.setItem(
+    "productPitch",
+    productPitches.find((v) => v[0].test(path))[1]
+  );
 }
 
 let showError = true;
