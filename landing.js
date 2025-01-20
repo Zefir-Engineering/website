@@ -1,10 +1,28 @@
 /**
- * Will be called once the Google Maps API is loaded & by this script
+ * Used by our website created before 2025
+ * Will be called once the Google Maps API is loaded
  */
 function initGoogleMap() {
   initAutoComplete($("#autocomplete"), $("#goingnext"));
   initAutoComplete($("#autocomplete_2"), $("#goingnext-2"));
   initAutoComplete($("#autocomplete_3"), $("#goingnext-3"));
+  storeDataForProductPitchABTesting();
+}
+
+/**
+ * Used by our website created in 2025
+ * Will be called once the Google Maps API is loaded
+ */
+function initGoogleMapV2() {
+  $(".seller-lead-form-cta").each(function( index ) {
+    const $this = $(this);
+
+    initAutoComplete(
+      $this.find(".seller-lead-form-cta-input"),
+      $this.find(".seller-lead-form-cta-button")
+    );
+  });
+
   storeDataForProductPitchABTesting();
 }
 
