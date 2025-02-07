@@ -14,7 +14,7 @@ $(function () {
 
         document.querySelectorAll("a").forEach(link => {
             const href = link.getAttribute("href");
-            if (href && href.startsWith("/") && !href.includes("#") && !href.includes("mailto:") && !href.includes("tel:")) {
+            if (href && (href.startsWith("/") || href.startsWith(window.location.origin)) && !href.includes("#") && !href.includes("mailto:") && !href.includes("tel:")) {
                 const url = new URL(href, window.location.origin);
 
                 Object.keys(params).forEach((key) => url.searchParams.append(key, params[key]));
